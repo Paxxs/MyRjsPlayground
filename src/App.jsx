@@ -30,7 +30,7 @@ class App extends Component {
       <div className={sytles.todo_container}>
         <div className={sytles.todo_wrap}>
           <Header />
-          <List />
+          <List todos={this.state.todos} />
           <Footer />
         </div>
       </div>
