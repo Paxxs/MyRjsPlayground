@@ -7,10 +7,11 @@ import styles from './index.module.css'
 export default class List extends Component {
   static propTypes = {
     todos: PropTypes.array.isRequired,
-    checkTodoItem: PropTypes.func.isRequired
+    checkTodoItem: PropTypes.func.isRequired,
+    delTodoItem: PropTypes.func.isRequired
   }
   render() {
-    const { todos, checkTodoItem } = this.props
+    const { todos, checkTodoItem, delTodoItem } = this.props
     return (
       <ul className={styles.todo_main}>
         {
@@ -21,6 +22,7 @@ export default class List extends Component {
                 {...todoObj}
                 // 父组件App给item的回调函数，用于处理完成 todo 项
                 checkTodoItem={checkTodoItem}
+                delTodoItem={delTodoItem}
               />
             )
           })

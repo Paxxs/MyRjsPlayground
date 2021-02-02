@@ -11,7 +11,8 @@ export default class Item extends Component {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         done: PropTypes.bool.isRequired,
-        checkTodoItem: PropTypes.func.isRequired
+        checkTodoItem: PropTypes.func.isRequired,
+        delTodoItem: PropTypes.func.isRequired
     }
     // 检测鼠标是否移入，更新状态
     handleMousehover = (mouseOn) => {
@@ -28,6 +29,12 @@ export default class Item extends Component {
             this.props.checkTodoItem(id, event.target.checked)
         }
     }
+
+    // 删除一条 todo
+    handleDel = (id) => {
+        if (window.confirm("🤔 亲亲，确定要删除嘛？"))
+            this.props.delTodoItem(id)
+    }
     render() {
         const { id, name, done } = this.props
         return (
@@ -39,6 +46,8 @@ export default class Item extends Component {
                 <button
                     // className="btn btn-danger" 
                     className={`${styles.btn} ${styles.btn_danger}`}
+                    // onClick={() => { this.props.delTodoItem(id) }}
+                    onClick={() => { this.handleDel(id) }}
                     style={{ display: this.state.mouseOn ? 'block' : 'none' }}>删除</button>
             </li>
         )

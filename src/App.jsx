@@ -57,12 +57,24 @@ class App extends Component {
     })
   }
 
+  // 删除一项todo
+  delTodoItem = (id) => {
+    // 直接过滤掉
+    const NewTodes = this.state.todos.filter((todoObj) => {
+      return todoObj.id !== id
+    })
+    // console.log(NewTodes)
+    this.setState({
+      todos: NewTodes
+    })
+  }
+
   render() {
     return (
       <div className={sytles.todo_container}>
         <div className={sytles.todo_wrap}>
           <Header addTodoItem={(name) => { this.addTodoItem(name) }} />
-          <List todos={this.state.todos} checkTodoItem={this.checkTodoItem} />
+          <List todos={this.state.todos} checkTodoItem={this.checkTodoItem} delTodoItem={this.delTodoItem} />
           <Footer />
         </div>
       </div>
