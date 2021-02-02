@@ -7,10 +7,11 @@ export default class Item extends Component {
     state = {
         mouseOn: false
     }
-    static propsTypes = {
+    static propTypes = {
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        done: PropTypes.bool.isRequired
+        done: PropTypes.bool.isRequired,
+        checkTodoItem: PropTypes.func.isRequired
     }
     // 检测鼠标是否移入，更新状态
     handleMousehover = (mouseOn) => {
@@ -20,12 +21,19 @@ export default class Item extends Component {
             })
         }
     }
+    // 来自APP 父组件的回调，处理完成todo的打勾
+    handleCheck = (id) => {
+        return (event) => {
+            // console.log(id, event.target.checked)
+            this.props.checkTodoItem(id, event.target.checked)
+        }
+    }
     render() {
-        const { name, done } = this.props
+        const { id, name, done } = this.props
         return (
             <li onMouseEnter={this.handleMousehover(true)} onMouseLeave={this.handleMousehover(false)}>
                 <label>
-                    <input type="checkbox" defaultChecked={done} />
+                    <input onChange={this.handleCheck(id)} type="checkbox" defaultChecked={done} />
                     <span>{name}</span>
                 </label>
                 <button

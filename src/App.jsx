@@ -42,12 +42,27 @@ class App extends Component {
     )
   }
 
+  // 完成todo处理
+  checkTodoItem = (id, done) => {
+    const NewTodos = this.state.todos.map((todoObj) => {
+      if (todoObj.id === id)
+        // console.log("更新后", { ...todoObj, done: done })
+        // 后面的 done 是简写，实际上是 done: done
+        return { ...todoObj, done }
+      return todoObj
+    })
+    // console.log("来自item", id, done, NewTodos)
+    this.setState({
+      todos: NewTodos
+    })
+  }
+
   render() {
     return (
       <div className={sytles.todo_container}>
         <div className={sytles.todo_wrap}>
           <Header addTodoItem={(name) => { this.addTodoItem(name) }} />
-          <List todos={this.state.todos} />
+          <List todos={this.state.todos} checkTodoItem={this.checkTodoItem} />
           <Footer />
         </div>
       </div>
