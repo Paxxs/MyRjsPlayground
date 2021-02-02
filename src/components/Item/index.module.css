@@ -33,6 +33,11 @@ li:last-child {
   border-bottom: none;
 }
 
+li:hover {
+  color: whitesmoke;
+  background-color: gray;
+}
+
 /* 按钮 */
 .btn {
   display: inline-block;
