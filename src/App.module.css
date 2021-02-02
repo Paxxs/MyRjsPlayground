@@ -1,0 +1,9 @@
+.todo_container {
+  width: 600px;
+  margin: 0 auto;
+}
+.todo_container .todo_wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
