@@ -21,6 +21,7 @@ export default class Header extends Component {
         }
         // console.log(target.value, key)
         this.props.addTodoItem(target.value)
+        target.value = ""
     }
     render() {
         return (
