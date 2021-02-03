@@ -75,7 +75,7 @@ class App extends Component {
         <div className={sytles.todo_wrap}>
           <Header addTodoItem={(name) => { this.addTodoItem(name) }} />
           <List todos={this.state.todos} checkTodoItem={this.checkTodoItem} delTodoItem={this.delTodoItem} />
-          <Footer />
+          <Footer todos={this.state.todos} />
         </div>
       </div>
     )
