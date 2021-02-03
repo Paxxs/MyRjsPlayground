@@ -79,13 +79,21 @@ class App extends Component {
     )
   }
 
+  delFinishedTodoItem = () => {
+    const newTodos = this.state.todos.filter((todoObj) => !todoObj.done)
+    // console.log(newTodos)
+    this.setState({
+      todos: newTodos
+    })
+  }
+
   render() {
     return (
       <div className={sytles.todo_container}>
         <div className={sytles.todo_wrap}>
           <Header addTodoItem={(name) => { this.addTodoItem(name) }} />
           <List todos={this.state.todos} checkTodoItem={this.checkTodoItem} delTodoItem={this.delTodoItem} />
-          <Footer todos={this.state.todos} finishALlTodoItem={this.finishALlTodoItem} />
+          <Footer todos={this.state.todos} finishALlTodoItem={this.finishALlTodoItem} delFinishedTodoItem={this.delFinishedTodoItem} />
         </div>
       </div>
     )

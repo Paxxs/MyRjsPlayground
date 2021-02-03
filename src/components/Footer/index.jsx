@@ -6,10 +6,11 @@ import styles from './index.module.css'
 export default class Footer extends Component {
     static propTypes = {
         todos: PropTypes.array.isRequired,
-        finishALlTodoItem: PropTypes.func.isRequired
+        finishALlTodoItem: PropTypes.func.isRequired,
+        delFinishedTodoItem: PropTypes.func.isRequired
     }
     render() {
-        const { todos, finishALlTodoItem } = this.props
+        const { todos, finishALlTodoItem, delFinishedTodoItem } = this.props
         // const finishedTodos = todos.reduce((accumulator, curr_todoObj) => {
         //     return accumulator + (curr_todoObj.done ? 1 : 0)
         // }, 0)
@@ -31,7 +32,9 @@ export default class Footer extends Component {
                 <span>
                     <span>已完成{finishedTodos}</span> / 全部{totalTodos}
                 </span>
-                <button className={`${styles.btn} ${styles.btn_danger}`}>清除已完成任务</button>
+                <button className={`${styles.btn} ${styles.btn_danger}`}
+                    onClick={() => delFinishedTodoItem()}
+                >清除已完成任务</button>
             </div>
         )
     }
