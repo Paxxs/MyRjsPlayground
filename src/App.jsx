@@ -93,6 +93,7 @@ class App extends Component {
   render() {
     return (
       <div className={sytles.todo_container}>
+        <h1 className={sytles.h1}>Todo List</h1>
         <div className={sytles.todo_wrap}>
           <Header addTodoItem={(name) => { this.addTodoItem(name) }} />
           <List todos={this.state.todos} checkTodoItem={this.checkTodoItem} delTodoItem={this.delTodoItem} />
