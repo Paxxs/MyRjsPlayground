@@ -25,7 +25,7 @@ export default class Footer extends Component {
                         // defaultChecked={finishedTodos === totalTodos ? true : false}
 
                         // * 用 checked 需要有 onChange 处理函数或 readOnly
-                        checked={finishedTodos === totalTodos ? true : false} />
+                        checked={finishedTodos === totalTodos && totalTodos !== 0 ? true : false} />
                 </label>
                 <span>
                     <span>已完成{finishedTodos}</span> / 全部{totalTodos}
