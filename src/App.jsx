@@ -6,24 +6,22 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import List from './components/List';
 
+// 从 localStorage 初始化 state
+let initState = {
+  todos: []
+}
+
+let todoKey = "todos"
+const persistedTodos = JSON.parse(localStorage.getItem(todoKey))
+console.log("localStorage", persistedTodos, localStorage)
+// 被json解析后，如果没有值是null，只要存在就覆盖 initState
+if (persistedTodos) {
+  initState = persistedTodos
+}
+
 class App extends Component {
-  state = {
-    todos: [
-      {
-        id: nanoid(),
-        name: "吃饭",
-        done: true
-      }, {
-        id: nanoid(),
-        name: "睡觉",
-        done: true
-      }, {
-        id: nanoid(),
-        name: "打豆豆",
-        done: true
-      }
-    ]
-  }
+  // 从 localStorage 初始化 state
+  state = initState
 
   // 添加新的todo项，传递给Header子组件的回调函数
   addTodoItem = (name) => {
@@ -85,6 +83,11 @@ class App extends Component {
     this.setState({
       todos: newTodos
     })
+  }
+
+  componentDidUpdate() {
+    // 当组件更新完后，保存当前state值
+    localStorage.setItem(todoKey, JSON.stringify(this.state))
   }
 
   render() {
