@@ -12,6 +12,8 @@ export default class List extends Component {
   }
   render() {
     const { todos, checkTodoItem, delTodoItem } = this.props
+    if (todos.length === 0)
+      return (<ul className={styles.todo_main}><li>今日无任务</li></ul>)
     return (
       <ul className={styles.todo_main}>
         {
