@@ -40,7 +40,11 @@ export default class Item extends Component {
         return (
             <li onMouseEnter={this.handleMousehover(true)} onMouseLeave={this.handleMousehover(false)}>
                 <label>
-                    <input onChange={this.handleCheck(id)} type="checkbox" defaultChecked={done} />
+                    <input onChange={this.handleCheck(id)} type="checkbox"
+                        // * 这里有个隐藏的坑，默认值只有在初始时候有效。后续更改值是不会有任何显示的。所以要用 checked
+                        // defaultChecked={done}
+                        checked={done}
+                    />
                     <span>{name}</span>
                 </label>
                 <button

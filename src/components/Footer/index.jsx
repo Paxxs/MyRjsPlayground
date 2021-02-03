@@ -5,10 +5,11 @@ import styles from './index.module.css'
 
 export default class Footer extends Component {
     static propTypes = {
-        todos: PropTypes.array.isRequired
+        todos: PropTypes.array.isRequired,
+        finishALlTodoItem: PropTypes.func.isRequired
     }
     render() {
-        const { todos } = this.props
+        const { todos, finishALlTodoItem } = this.props
         // const finishedTodos = todos.reduce((accumulator, curr_todoObj) => {
         //     return accumulator + (curr_todoObj.done ? 1 : 0)
         // }, 0)
@@ -23,7 +24,7 @@ export default class Footer extends Component {
                     <input type="checkbox"
                         // * 这里有个隐藏的坑，默认值只有在初始时候有效。后续更改值是不会有任何显示的
                         // defaultChecked={finishedTodos === totalTodos ? true : false}
-
+                        onChange={(event) => finishALlTodoItem(event.target.checked)}
                         // * 用 checked 需要有 onChange 处理函数或 readOnly
                         checked={finishedTodos === totalTodos && totalTodos !== 0 ? true : false} />
                 </label>
